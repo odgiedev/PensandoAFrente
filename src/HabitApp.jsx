@@ -175,10 +175,10 @@ const HabitsApp = () => {
               className={`font-semibold flex w-2/5 justify-between items-center p-4 border rounded-lg cursor-pointer transition-colors 
                 ${
                   isConfirmed
-                    ? "bg-gray-300 bg-gray-700 text-gray-500 cursor-not-allowed"
+                    ? "bg-gray-700 text-gray-500 cursor-not-allowed"
                     : isSelected
-                    ? "bg-blue-500 text-white bg-blue-400"
-                    : "bg-white bg-gray-800 hover:bg-gray-700 border-gray-700"
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-800 hover:bg-gray-700 border-gray-700"
                 }`}
               onClick={() => toggleHabit(item)}
             >
@@ -191,7 +191,7 @@ const HabitsApp = () => {
       </ul>
 
       <button
-        className={`mt-6 w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 hover:bg-blue-400 ${
+        className={`mt-6 w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-400 ${
           selectedHabits.length === 0 && "opacity-50 cursor-not-allowed"
         }`}
         onClick={confirmSelection}
@@ -205,7 +205,7 @@ const HabitsApp = () => {
           <div className="mt-6 p-4 rounded-lg">
             <h2 className="text-2xl text-center font-bold mb-4">Parabéns!</h2>
             {confirmedHabits.map((habit, index) => (
-              <div key={index} className="mb-4 p-4 bg-white bg-green-600 rounded-lg shadow-md">
+              <div key={index} className="mb-4 p-4 bg-green-600 rounded-lg shadow-md">
                 <h3 className="font-semibold text-lg">{habit.habit}</h3>
                 <p className="mt-2">{habit.benefits}</p>
               </div>
@@ -214,7 +214,7 @@ const HabitsApp = () => {
 
           <div className="mt-10 flex justify-center">
             <button
-              className="text-xl bg-green-800 text-white p-2 rounded-lg hover:bg-green-700 hover:bg-green-700"
+              className="text-xl bg-green-800 text-white p-2 rounded-lg hover:bg-green-700"
               onClick={clearSelection}
             >
               ↪️
