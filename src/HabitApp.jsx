@@ -134,26 +134,26 @@ const HabitsApp = () => {
   const [isConfirmed, setIsConfirmed] = useState(false);
 
   const toggleHabit = (habit) => {
-    if (isConfirmed) return; // Impede seleção após confirmação
-    if (confirmedHabits.some((h) => h.habit === habit.habit)) return; // Ignora hábitos já confirmados
+    if (isConfirmed) return;
+    if (confirmedHabits.some((h) => h.habit === habit.habit)) return; 
 
     setSelectedHabits((prev) =>
       prev.some((h) => h.habit === habit.habit)
-        ? prev.filter((h) => h.habit !== habit.habit) // Remove se já estiver selecionado
-        : [...prev, habit] // Adiciona se não estiver
+        ? prev.filter((h) => h.habit !== habit.habit)
+        : [...prev, habit]
     );
   };
 
   const confirmSelection = () => {
-    setConfirmedHabits((prev) => [...prev, ...selectedHabits]); // Adiciona hábitos confirmados
-    setSelectedHabits([]); // Limpa os hábitos selecionados
-    setIsConfirmed(true); // Desabilita mais seleções
+    setConfirmedHabits((prev) => [...prev, ...selectedHabits]);
+    setSelectedHabits([]);
+    setIsConfirmed(true);
   };
 
   const clearSelection = () => {
     setSelectedHabits([]);
     setConfirmedHabits([]);
-    setIsConfirmed(false); // Permite nova seleção
+    setIsConfirmed(false);
   };
 
   const uniqueBenefits = [
@@ -164,7 +164,6 @@ const HabitsApp = () => {
     <div className="px-6 pt-6 pb-32 min-h-screen bg-gradient-to-b from-indigo-950 to-slate-900">
       <h1 className="text-5xl font-bold text-center mt-8 mb-16 ">Olá, o que você fez hoje? 🌟</h1>
 
-      {/* Lista de Hábitos */}
       <ul className="flex flex-wrap justify-center gap-4">
         {habits.map((item, index) => {
           const isSelected = selectedHabits.some((h) => h.habit === item.habit);
@@ -176,10 +175,10 @@ const HabitsApp = () => {
               className={`font-semibold flex w-2/5 justify-between items-center p-4 border rounded-lg cursor-pointer transition-colors 
                 ${
                   isConfirmed
-                    ? "bg-gray-300 dark:bg-gray-700 text-gray-500 cursor-not-allowed" // Confirmado
+                    ? "bg-gray-300 bg-gray-700 text-gray-500 cursor-not-allowed"
                     : isSelected
-                    ? "bg-blue-500 text-white dark:bg-blue-400" // Selecionado
-                    : "bg-white dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-700" // Normal
+                    ? "bg-blue-500 text-white bg-blue-400"
+                    : "bg-white bg-gray-800 hover:bg-gray-700 border-gray-700"
                 }`}
               onClick={() => toggleHabit(item)}
             >
@@ -191,9 +190,8 @@ const HabitsApp = () => {
         })}
       </ul>
 
-      {/* Botão Confirmar */}
       <button
-        className={`mt-6 w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 dark:hover:bg-blue-400 ${
+        className={`mt-6 w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 hover:bg-blue-400 ${
           selectedHabits.length === 0 && "opacity-50 cursor-not-allowed"
         }`}
         onClick={confirmSelection}
@@ -202,13 +200,12 @@ const HabitsApp = () => {
         Confirmar
       </button>
 
-      {/* Benefícios dos Hábitos Confirmados */}
       {uniqueBenefits.length > 0 && (
         <>
           <div className="mt-6 p-4 rounded-lg">
             <h2 className="text-2xl text-center font-bold mb-4">Parabéns!</h2>
             {confirmedHabits.map((habit, index) => (
-              <div key={index} className="mb-4 p-4 bg-white dark:bg-green-600 rounded-lg shadow-md">
+              <div key={index} className="mb-4 p-4 bg-white bg-green-600 rounded-lg shadow-md">
                 <h3 className="font-semibold text-lg">{habit.habit}</h3>
                 <p className="mt-2">{habit.benefits}</p>
               </div>
@@ -217,7 +214,7 @@ const HabitsApp = () => {
 
           <div className="mt-10 flex justify-center">
             <button
-              className="text-xl bg-green-800 text-white p-2 rounded-lg hover:bg-green-700 dark:hover:bg-green-700"
+              className="text-xl bg-green-800 text-white p-2 rounded-lg hover:bg-green-700 hover:bg-green-700"
               onClick={clearSelection}
             >
               ↪️
